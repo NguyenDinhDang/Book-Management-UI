@@ -1,13 +1,18 @@
+import type { ReactNode } from 'react';
+import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
+
 interface EmptyStateProps {
   message: string;
-  icon?: string; // optional — có default value bên dưới
+  icon?: ReactNode;
 }
 
-// Dấu = trong params = default value khi không truyền props
-export default function EmptyState({ message, icon = '📭' }: EmptyStateProps) {
+export default function EmptyState({
+  message,
+  icon = <MailOutlinedIcon fontSize="large" />,
+}: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-16 text-gray-400">
-      <span className="text-4xl mb-3">{icon}</span>
+      <span className="mb-3 flex items-center justify-center text-4xl">{icon}</span>
       <p className="text-sm">{message}</p>
     </div>
   );
